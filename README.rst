@@ -29,11 +29,25 @@ Installation and Usage
 Basic container
 ---------------
 
+*Python 3*::
+
+docker build -t biopython https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3
+docker run -t -i biopython /bin/bash
+python3 # inside the container
+
+* Python 2
+
 Jupyter container
 -----------------
 
+* Python 3
+* Python 2
+
 Jupyter container with tutorials
 --------------------------------
+
+* Python 3
+* Python 2
 
 
 Development
