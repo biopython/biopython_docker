@@ -1,0 +1,9 @@
+WORKDIR /
+#IPython notebook
+RUN apt-get install -y <pythonp>-zmq <pythonp>-jinja2
+RUN pip<ver> install tornado
+RUN pip<ver> install jsonschema
+RUN pip<ver> install ipython
+RUN mkdir scratch
+WORKDIR scratch
+CMD ipython notebook --no-browser --ip=* --port=980<ver>
