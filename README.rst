@@ -29,6 +29,8 @@ Installation and Usage
 Basic container
 ---------------
 
+In the basic container, you ssh into it and use it from there.
+
 Python 3::
 
     docker build -t biopython https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3
