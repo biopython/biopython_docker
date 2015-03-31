@@ -29,29 +29,65 @@ Installation and Usage
 Basic container
 ---------------
 
-*Python 3*::
+Python 3::
 
-docker build -t biopython https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3
-docker run -t -i biopython /bin/bash
-python3 # inside the container
+    docker build -t biopython https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3
+    docker run -t -i biopython /bin/bash
+    python3  # inside the container
 
-* Python 2
+Python 2::
+
+    docker build -t biopython2 https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython2
+    docker run -t -i biopython2 /bin/bash
+    python  # inside the container
 
 Jupyter container
 -----------------
 
-* Python 3
-* Python 2
+Here you will need to point your browser to localhost:9803 (or 9802 on Python
+2).
+
+**If you are on boot2docker you need to do an extra port mapping step on your
+VM**
+
+Python 3::
+
+    docker build -t biopython-nb https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3-Notebook
+    docker run -p 9803:9803 -t -i biopython-nb
+
+Python 2::
+
+    docker build -t biopython2-nb https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython2-Notebook 
+    docker run -p 9802:9802 -t -i biopython2-nb
 
 Jupyter container with tutorials
 --------------------------------
 
-* Python 3
-* Python 2
+Here you will need to point your browser to localhost:9803 (or 9802 on Python
+2).
 
+**If you are on boot2docker you need to do an extra port mapping step on your
+VM**
+
+Python 3::
+
+    docker build -t biopython-tutorial https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3-Tutorial
+    docker run -p 9803:9803 -t -i biopython-tutorial
+
+Python 2::
+
+    docker build -t biopython2-tutorial https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython2-Tutorial
+    docker run -p 9802:9802 -t -i biopython2-tutorial
 
 Development
 ===========
+
+These containers are generated via a (arguably clumsy) template system.
+Just run (in the top level):
+
+python3 src/generate-containers.py
+
+The templates are in the template directory
 
 
 LICENSING
