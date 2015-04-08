@@ -102,3 +102,5 @@ LICENSING
 The software herein is made available under a dual license under the
 Biopython historic license (see file LICENSE.Biopython) and the 3-clause
 BSD license (see file LICENSE.BSD-3-Clause)
+
+Logo credits and copyright: Vincent Davis
