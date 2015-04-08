@@ -1,6 +1,10 @@
 Docker containers for Biopython
 ===============================
 
+.. image:: logo/logo_python_final.png
+   :scale: 40 %
+   :align: center
+
 Here you can find Docker containers that include Biopython.
 
 To install these you will need Docker (https://www.docker.com/)
