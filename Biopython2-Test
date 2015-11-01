@@ -1,9 +1,9 @@
-FROM ubuntu:vivid
+FROM ubuntu:wily
 MAINTAINER Tiago Antao <tra@popgen.net>
 
 ENV DEBIAN_FRONTEND noninteractive
 #We need this for phylip
-RUN echo 'deb http://archive.ubuntu.com/ubuntu vivid multiverse' >> /etc/apt/sources.list
+RUN echo 'deb http://archive.ubuntu.com/ubuntu wily multiverse' >> /etc/apt/sources.list
 
 RUN apt-get update
 RUN apt-get upgrade -y
