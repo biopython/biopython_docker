@@ -119,7 +119,9 @@ RUN pip3 install tornado
 RUN pip3 install jsonschema
 RUN pip3 install ipython
 RUN pip3 install pyzmq  --upgrade
-RUN pip3 install jupyter  --upgrade
+RUN pip3 install jupyter --upgrade
+RUN pip3 install numpy  --upgrade
+RUN pip3 install pandas --upgrade 
 RUN mkdir scratch
 WORKDIR scratch
 CMD jupyter notebook --no-browser --ip=* --port=9803
