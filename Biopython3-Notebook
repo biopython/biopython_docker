@@ -118,6 +118,8 @@ RUN apt-get install -y python3-zmq python3-jinja2
 RUN pip3 install tornado
 RUN pip3 install jsonschema
 RUN pip3 install ipython
+RUN apt-get install -y python3.5-dev
+RUN pip3 install pyzmq  --upgrade
 RUN pip3 install jupyter  --upgrade
 RUN mkdir scratch
 WORKDIR scratch
