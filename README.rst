@@ -80,6 +80,8 @@ Buildbot version
 
 **You only need this if you help with our testing effort**
 
+CHANGEUSER CHANGEPASS
+
 Python 3::
 
     docker build -t biopython-tutorial https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3-Tutorial
