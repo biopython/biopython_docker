@@ -40,12 +40,18 @@ In the basic container, you ssh into it and use it from there.
 
 Python 3::
 
-    docker build 
-    docker run -t -i biopython /bin/bash
+    docker build tiagoantao/biopython
+    docker run -t -i tiagoantao/biopython /bin/bash
     python3  # inside the container
 
 BioSQL container
 ----------------
+
+Python 3::
+
+    docker build tiagoantao/biopython-sql
+    docker run -t -i tiagoantao/biopython-sql /bin/bash
+    python3  # inside the container
 
 Jupyter container
 -----------------
@@ -58,8 +64,8 @@ VM**
 
 Python 3::
 
-    docker build 
-    docker run -p 9803:9803 -t -i biopython-nb
+    docker build tiagoantao/biopython-notebook
+    docker run -p 9803:9803 -t -i tiagoantao/biopython-notebook
 
 Jupyter container with tutorials
 --------------------------------
@@ -72,19 +78,26 @@ VM**
 
 Python 3::
 
-    docker build 
-    docker run -p 9803:9803 -t -i biopython-tutorial
+    docker build tiagoantao/biopython-tutorial
+    docker run -p 9803:9803 -t -i tiagoantao/biopython-tutorial
 
 Buildbot version
 ================
 
 **You only need this if you help with our testing effort**
 
+You will need to manually download the Docker file and update
+
 CHANGEUSER CHANGEPASS
+
+to your buildbot username and password
 
 Python 3::
 
-    docker build -t biopython-tutorial https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3-Tutorial
+    #do this in an empty directory
+    wget https://raw.githubusercontent.com/biopython/biopython_docker/new_generation/biopython-buildbot/Dockerfile
+    #REMEMBER TO CHANGE CHANGEUSER AND CHANGEPASS
+    docker build -t biopython-buildbot . 
     docker run -t -i biopython-buildbot
 
 
