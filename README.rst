@@ -13,19 +13,22 @@ on Linux or boot2docker (http://boot2docker.io/) on Windows/Mac.
 All containers should include all dependencies which can be installed
 without licensing/copyright issues.
 
-There are 4 containers available at this time:
+There are 5 containers available at this time:
 
-* A basic one where you ssh into to use it
+* A basic one where you ssh into to use it. No databases included.
 
-* One with a Jupyter (IPython Notebook) interface
+* A basic one where you ssh into to use it. With BioSQL.
+
+* One with a Jupyter (IPython Notebook) interface,
 
 * One with a Jupyter (IPython Notebook) interface including a Biopython
-  tutorial
+  tutorial.
 
-* One for buildbot integration testing (currently not documented)
+* One for buildbot integration testing.
 
 
-For each container there are 2 versions: for Python 3 and 2.
+For each container there will be 2 versions: for Python 3 and legacy Python 2.
+For now only Python 3 is available.
 
 Installation and Usage
 ======================
@@ -37,15 +40,12 @@ In the basic container, you ssh into it and use it from there.
 
 Python 3::
 
-    docker build -t biopython https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3
+    docker build 
     docker run -t -i biopython /bin/bash
     python3  # inside the container
 
-Python 2::
-
-    docker build -t biopython2 https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython2
-    docker run -t -i biopython2 /bin/bash
-    python  # inside the container
+BioSQL container
+----------------
 
 Jupyter container
 -----------------
@@ -58,13 +58,8 @@ VM**
 
 Python 3::
 
-    docker build -t biopython-nb https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3-Notebook
+    docker build 
     docker run -p 9803:9803 -t -i biopython-nb
-
-Python 2::
-
-    docker build -t biopython2-nb https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython2-Notebook 
-    docker run -p 9802:9802 -t -i biopython2-nb
 
 Jupyter container with tutorials
 --------------------------------
@@ -77,23 +72,18 @@ VM**
 
 Python 3::
 
-    docker build -t biopython-tutorial https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3-Tutorial
+    docker build 
     docker run -p 9803:9803 -t -i biopython-tutorial
 
-Python 2::
+Buildbot version
+================
 
-    docker build -t biopython2-tutorial https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython2-Tutorial
-    docker run -p 9802:9802 -t -i biopython2-tutorial
+**You only need this if you help with our testing effort**
 
-Development
-===========
+Python 3::
 
-These containers are generated via a (arguably clumsy) template system.
-Just run (in the top level):
-
-python3 src/generate-containers.py
-
-The templates are in the template directory
+    docker build -t biopython-tutorial https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3-Tutorial
+    docker run -t -i biopython-buildbot
 
 
 LICENSING
