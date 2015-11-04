@@ -118,6 +118,7 @@ RUN apt-get install -y python-zmq python-jinja2
 RUN pip2 install tornado
 RUN pip2 install jsonschema
 RUN pip2 install ipython
+RUN pip2 install jupyter  --upgrade
 RUN mkdir scratch
 WORKDIR scratch
-CMD ipython notebook --no-browser --ip=* --port=9802
+CMD jupyter notebook --no-browser --ip=* --port=9802
