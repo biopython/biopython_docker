@@ -5,11 +5,9 @@ ENV DEBIAN_FRONTEND noninteractive
 
 WORKDIR /
 #IPython notebook
-RUN apt-get install -y python3-zmq python3-jinja2
-RUN pip3 install tornado
-RUN pip3 install jsonschema
-RUN pip3 install ipython
+RUN apt-get install --force-yes -y python3-zmq python3-jinja2
+RUN pip3 install jupyter
 RUN mkdir scratch
 WORKDIR scratch
-CMD ipython notebook --no-browser --ip=* --port=9803
+CMD jupyter notebook --no-browser --ip=* --port=9803
 
