@@ -85,13 +85,13 @@ Mount your local dir to Docker::
 
     docker run -v $PWD:/scratch -e JUPYTER_UID=$UID -it -p 9803:9803 biopython-notebook
 
-.. image:: image/jupytertest1.tiff
+.. image:: image/jupytertest1.png
        :scale: 40 %
        :align: center
-.. image:: image/biopythontest1.tiff
+.. image:: image/biopythontest1.png
               :scale: 40 %
               :align: center
-.. image:: image/dockeruser1.tiff
+.. image:: image/dockeruser1.png
        :scale: 40 %
        :align: center
 
