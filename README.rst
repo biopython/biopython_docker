@@ -124,4 +124,4 @@ BSD license (see file LICENSE.BSD-3-Clause)
 
 Logo credits and copyright: Vincent Davis
 
-Authors: Tiago Antao with help from Björn Grüning and Tao Zhang
+Authors: Tiago Antao and Tao Zhang with help from Björn Grüning
