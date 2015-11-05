@@ -12,7 +12,7 @@ RUN apt-get install -y --force-yes python3-matplotlib python3-reportlab python3-
 RUN apt-get install -y --force-yes clustalw fasttree t-coffee python3-pil
 RUN apt-get install -y --force-yes bwa ncbi-blast+ emboss clustalo phylip mafft muscle
 RUN apt-get install -y --force-yes samtools phyml wise raxml language-pack-en
-RUN apt-get install -y --force-yes embassy-phylip paml probcons
+RUN apt-get install -y --force-yes embassy-phylip paml probcons python3-pandas
 RUN apt-get clean
 #for Phylo_CDAO
 RUN pip3 install rdflib
