@@ -21,4 +21,4 @@ else
 fi
 
 
-exec su jupyter && jupyter notebook --no-browser --ip=* --port=9803
+su jupyteruser -c "jupyter notebook --no-browser --ip=* --port=9803"
