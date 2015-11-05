@@ -9,5 +9,11 @@ RUN apt-get install --force-yes -y python3-zmq python3-jinja2
 RUN pip3 install jupyter
 RUN mkdir scratch
 WORKDIR scratch
-CMD jupyter notebook --no-browser --ip=* --port=9803
-
+ADD startup.sh /usr/bin/startup
+RUN chmod +x startup
+ENV JUPYTER_USER=jupyter \
+    JUPYTER_UID=1555 \
+    JUPYTER_GID=1555 \
+    JUPYTER_HOME=/scratch
+#CMD jupyter notebook --no-browser --ip=* --port=9803
+CMD /usr/bin/startup

@@ -5,5 +5,4 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN git clone https://github.com/tiagoantao/biopython-notebook.git
 WORKDIR /biopython-notebook/notebooks
-CMD ipython notebook --no-browser --ip=* --port=9803
-
+CMD jupyter notebook --no-browser --ip=* --port=9803
