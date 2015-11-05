@@ -21,4 +21,4 @@ else
 fi
 
 
-su jupyteruser -c "jupyter notebook --no-browser --ip=* --port=9803"
+su $JUPYTER_USER -c "jupyter notebook --no-browser --ip=* --port=9803"
