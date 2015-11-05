@@ -20,5 +20,5 @@ else
   chown -R $JUPYTER_UID $JUPYTER_HOME
 fi
 
-exec su jupyter
-exec jupyter notebook --no-browser --ip=* --port=9803
+
+exec su jupyter && jupyter notebook --no-browser --ip=* --port=9803
