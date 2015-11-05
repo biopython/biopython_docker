@@ -7,12 +7,12 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu wily multiverse' >> /etc/apt/sour
 
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y git python3-numpy wget gcc g++ python3-dev unzip make
+RUN apt-get install -y git python3-numpy wget gcc g++ python3-dev python3.5-dev unzip make
 RUN apt-get install -y python3-matplotlib python3-reportlab python3-pip r-base
 RUN apt-get install -y clustalw fasttree t-coffee python3-pil
 RUN apt-get install -y bwa ncbi-blast+ emboss clustalo phylip mafft muscle
 RUN apt-get install -y samtools phyml wise raxml language-pack-en
-RUN apt-get install -y embassy-phylip paml probcons
+RUN apt-get install -y embassy-phylip paml probcons python3-pandas
 #For BioSQL
 RUN apt-get install -y mysql-server python-mysqldb postgresql python3-psycopg2
 RUN apt-get install -y python3-mysql.connector
@@ -90,8 +90,8 @@ WORKDIR /
 #fastsimcoal
 RUN wget http://cmpg.unibe.ch/software/fastsimcoal2/downloads/fsc_linux64.zip
 RUN unzip fsc_linux64.zip
-RUN chmod a+x fsc_linux64/fsc252
-RUN cp fsc_linux64/fsc252 /usr/bin
+RUN chmod a+x fsc_linux64/fsc25211
+RUN cp fsc_linux64/fsc25211 /usr/bin
 RUN rm -rf fsc_*
 
 #DSSP
@@ -118,7 +118,10 @@ RUN apt-get install -y python3-zmq python3-jinja2
 RUN pip3 install tornado
 RUN pip3 install jsonschema
 RUN pip3 install ipython
+RUN pip3 install pyzmq  --upgrade
+RUN pip3 install jupyter --upgrade
+RUN pip3 install numpy  --upgrade
+RUN pip3 install pandas --upgrade 
 RUN mkdir scratch
 WORKDIR scratch
-CMD ipython notebook --no-browser --ip=* --port=9803
-
+CMD jupyter notebook --no-browser --ip=* --port=9803
