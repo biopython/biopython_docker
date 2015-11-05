@@ -6,7 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /
 #IPython notebook
 RUN apt-get install --force-yes -y python3-zmq python3-jinja2
-RUN pip3 install jupyter
+RUN pip3 install pyzmq --upgrade
+RUN pip3 install jupyter --upgrade
 RUN mkdir scratch
 WORKDIR scratch
 ADD startup.sh /usr/bin/startup

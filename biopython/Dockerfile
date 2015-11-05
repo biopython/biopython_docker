@@ -17,9 +17,11 @@ RUN apt-get install -y --force-yes embassy-phylip paml probcons python3-pandas
 RUN apt-get install -y --force-yes python3.5-dev
 RUN apt-get clean
 #for Phylo_CDAO
-RUN pip3 install pip --upgrade
+# RUN pip3 install pip --upgrade
 RUN pip3 install rdflib --upgrade
+RUN pip3 install cython --upgrade
 RUN pip3 install numpy pil --upgrade
+RUN pip3 install matplotlib --upgrade
 RUN pip3 install pandas --upgrade
 
 #Manual software
