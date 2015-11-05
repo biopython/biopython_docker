@@ -6,7 +6,7 @@ NC='\033[0m'
 
 if ! id -u $JUPYTER_USER > /dev/null 2>&1; then
   echo -e "use local user: " ${BLUE}$JUPYTER_USER${NC}
-  adduser --uid  $JUPYTER_UID --gid $JUPYTER_GID --disabled-password $JUPYTER_USER
+  adduser --uid  $JUPYTER_UID  -s /bin/bash --disabled-password $JUPYTER_USER
 fi
 
 if [ -e $JUPYTER_HOME ];
