@@ -34,7 +34,7 @@ WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab
 RUN  mkdir fonts
 WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip
-RUN mkdir /usr/lib/python3.5/dist-packages/reportlab/fonts
+RUN mkdir -p /usr/lib/python3.5/dist-packages/reportlab/fonts
 WORKDIR /usr/lib/python3.5/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip
 WORKDIR /
