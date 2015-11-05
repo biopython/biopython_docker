@@ -40,7 +40,7 @@ In the basic container, you ssh into it and use it from there.
 
 Python 3::
 
-    docker build tiagoantao/biopython
+    docker pull tiagoantao/biopython
     docker run -t -i tiagoantao/biopython /bin/bash
     python3  # inside the container
 
@@ -49,7 +49,7 @@ BioSQL container
 
 Python 3::
 
-    docker build tiagoantao/biopython-sql
+    docker pull tiagoantao/biopython-sql
     docker run -t -i tiagoantao/biopython-sql /bin/bash
     python3  # inside the container
 
@@ -64,7 +64,7 @@ VM**
 
 Python 3::
 
-    docker build tiagoantao/biopython-notebook
+    docker pull tiagoantao/biopython-notebook
     docker run -p 9803:9803 -t -i tiagoantao/biopython-notebook
 
 Jupyter container with tutorials
@@ -78,7 +78,7 @@ VM**
 
 Python 3::
 
-    docker build tiagoantao/biopython-tutorial
+    docker pull tiagoantao/biopython-tutorial
     docker run -p 9803:9803 -t -i tiagoantao/biopython-tutorial
 
 Buildbot version
@@ -109,3 +109,5 @@ Biopython historic license (see file LICENSE.Biopython) and the 3-clause
 BSD license (see file LICENSE.BSD-3-Clause)
 
 Logo credits and copyright: Vincent Davis
+
+Authors: Tiago Antao with help from Björn Grüning and Tao Zhang
