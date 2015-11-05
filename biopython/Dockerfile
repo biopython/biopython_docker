@@ -7,15 +7,23 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu wily multiverse' >> /etc/apt/sour
 
 RUN apt-get update
 RUN apt-get upgrade -y --force-yes
+RUN apt-get install -y --force-yes build-essential
 RUN apt-get install -y --force-yes git python3-numpy wget gcc g++ python3-dev unzip make
 RUN apt-get install -y --force-yes python3-matplotlib python3-reportlab python3-pip r-base
 RUN apt-get install -y --force-yes clustalw fasttree t-coffee python3-pil
 RUN apt-get install -y --force-yes bwa ncbi-blast+ emboss clustalo phylip mafft muscle
 RUN apt-get install -y --force-yes samtools phyml wise raxml language-pack-en
 RUN apt-get install -y --force-yes embassy-phylip paml probcons python3-pandas
+RUN apt-get install -y --force-yes python3.5-dev libxft-dev
 RUN apt-get clean
 #for Phylo_CDAO
-RUN pip3 install rdflib
+# RUN pip3 install pip --upgrade
+RUN pip3 install rdflib --upgrade
+RUN pip3 install cython --upgrade
+RUN pip3 install numpy --upgrade
+RUN pip3 install Pillow --upgrade
+RUN pip3 install matplotlib --upgrade
+RUN pip3 install pandas --upgrade
 
 #Manual software
 RUN echo "export DIALIGN2_DIR=/tmp" >> .bashrc
@@ -26,8 +34,13 @@ WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab
 RUN  mkdir fonts
 WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip
+RUN mkdir -p /usr/lib/python3.5/dist-packages/reportlab/fonts
+WORKDIR /usr/lib/python3.5/dist-packages/reportlab/fonts
+RUN unzip /pfbfer.zip
 WORKDIR /
 RUN rm pfbfer.zip
+
+
 
 #genepop
 RUN mkdir genepop
@@ -96,5 +109,4 @@ ENV PYTHON_PATH /biopython
 #Biopython
 RUN git clone https://github.com/biopython/biopython.git
 WORKDIR /biopython
-RUN python3 setup.py install
-
+RUN python3.5 setup.py install

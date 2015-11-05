@@ -81,6 +81,20 @@ Python 3::
     docker pull tiagoantao/biopython-tutorial
     docker run -p 9803:9803 -t -i tiagoantao/biopython-tutorial
 
+Mount your local dir to Docker::
+
+    docker run -v $PWD:/scratch -e JUPYTER_UID=$UID -it -p 9803:9803 biopython-notebook
+
+.. image:: image/jupytertest1.png
+       :scale: 40 %
+       :align: center
+.. image:: image/biopythontest1.png
+              :scale: 40 %
+              :align: center
+.. image:: image/dockeruser1.png
+       :scale: 40 %
+       :align: center
+
 Buildbot version
 ================
 
@@ -97,7 +111,7 @@ Python 3::
     #do this in an empty directory
     wget https://raw.githubusercontent.com/biopython/biopython_docker/new_generation/biopython-buildbot/Dockerfile
     #REMEMBER TO CHANGE CHANGEUSER AND CHANGEPASS
-    docker build -t biopython-buildbot . 
+    docker build -t biopython-buildbot .
     docker run -t -i biopython-buildbot
 
 
