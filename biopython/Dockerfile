@@ -21,7 +21,7 @@ RUN apt-get clean
 RUN pip3 install rdflib --upgrade
 RUN pip3 install cython --upgrade
 RUN pip3 install numpy --upgrade
-RUN pip3 install pil  --allow-external pil --upgrade
+RUN pip3 install Pillow --upgrade
 RUN pip3 install matplotlib --upgrade
 RUN pip3 install pandas --upgrade
 
