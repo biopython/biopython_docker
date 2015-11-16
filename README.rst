@@ -81,7 +81,8 @@ Python 3::
     docker pull tiagoantao/biopython-tutorial
     docker run -p 9803:9803 -t -i tiagoantao/biopython-tutorial
 
-Mount your local dir to Docker::
+Mount your local directory to Docker (here are are naming it $PWD/scratch, but
+change it as preferred)::
 
     docker run -v $PWD:/scratch -e JUPYTER_UID=$UID -it -p 9803:9803 biopython-notebook
 
