@@ -1,4 +1,4 @@
-FROM tiagoantao/biopython-notebook
+FROM biopython/biopython-notebook
 MAINTAINER Tiago Antao <tra@popgen.net>
 
 ENV DEBIAN_FRONTEND noninteractive

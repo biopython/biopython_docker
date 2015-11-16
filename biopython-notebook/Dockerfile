@@ -1,4 +1,4 @@
-FROM tiagoantao/biopython-sql:latest
+FROM biopython/biopython-sql:latest
 MAINTAINER Tiago Antao <tra@popgen.net>
 
 ENV DEBIAN_FRONTEND noninteractive
