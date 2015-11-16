@@ -1,6 +1,9 @@
 Docker containers for Biopython
 ===============================
 
+You are looking at a legacy version of this effort, please check
+the main branch for the current version.
+
 .. image:: logo/logo_python_final.png
    :scale: 40 %
    :align: center
