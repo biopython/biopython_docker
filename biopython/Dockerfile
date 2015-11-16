@@ -6,42 +6,41 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN echo 'deb http://archive.ubuntu.com/ubuntu wily multiverse' >> /etc/apt/sources.list
 
 RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y git python-numpy wget gcc g++ python-dev unzip make
-RUN apt-get install -y python-matplotlib python-reportlab python-pip r-base
-RUN apt-get install -y clustalw fasttree t-coffee 
-RUN apt-get install -y bwa ncbi-blast+ emboss clustalo phylip mafft muscle
-RUN apt-get install -y samtools phyml wise raxml language-pack-en
-RUN apt-get install -y embassy-phylip paml probcons
-#For BioSQL
-RUN apt-get install -y mysql-server python-mysqldb postgresql python-psycopg2
-RUN apt-get install -y python-mysql.connector
+RUN apt-get upgrade -y --force-yes
+RUN apt-get install -y --force-yes build-essential
+RUN apt-get install -y --force-yes git python3-numpy wget gcc g++ python3-dev unzip make
+RUN apt-get install -y --force-yes python3-matplotlib python3-reportlab python3-pip r-base
+RUN apt-get install -y --force-yes clustalw fasttree t-coffee python3-pil
+RUN apt-get install -y --force-yes bwa ncbi-blast+ emboss clustalo phylip mafft muscle
+RUN apt-get install -y --force-yes samtools phyml wise raxml language-pack-en
+RUN apt-get install -y --force-yes embassy-phylip paml probcons python3-pandas
+RUN apt-get install -y --force-yes python3.5-dev libxft-dev
 RUN apt-get clean
 #for Phylo_CDAO
-RUN pip2 install rdflib
-
-#Database servers
-RUN echo "host    all             all             ::1/128                 trust" > /etc/postgresql/9.4/main/pg_hba.conf
-RUN echo "service postgresql start" > .bashrc
-RUN echo "service mysql start" >> .bashrc
-RUN echo "export DIALIGN2_DIR=/tmp" >> .bashrc
-RUN echo "export LANG=en_GB.UTF-8" >> .bashrc
-RUN echo "service postgresql start" > entrypoint.sh
-RUN echo "service mysql start" >> entrypoint.sh
-RUN echo "export DIALIGN2_DIR=/tmp" >> entrypoint.sh
-RUN echo "export LANG=en_GB.UTF-8" >> entrypoint.sh
+# RUN pip3 install pip --upgrade
+RUN pip3 install rdflib --upgrade
+RUN pip3 install cython --upgrade
+RUN pip3 install numpy --upgrade
+RUN pip3 install Pillow --upgrade
+RUN pip3 install matplotlib --upgrade
+RUN pip3 install pandas --upgrade
 
 #Manual software
-
+RUN echo "export DIALIGN2_DIR=/tmp" >> .bashrc
 
 #reportlab fonts
 RUN wget http://www.reportlab.com/ftp/fonts/pfbfer.zip
-WORKDIR cd /usr/lib/python2.7/dist-packages/reportlab
+WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab
 RUN  mkdir fonts
-WORKDIR cd /usr/lib/python2.7/dist-packages/reportlab/fonts
+WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab/fonts
+RUN unzip /pfbfer.zip
+RUN mkdir -p /usr/lib/python3.5/dist-packages/reportlab/fonts
+WORKDIR /usr/lib/python3.5/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip
 WORKDIR /
 RUN rm pfbfer.zip
+
+
 
 #genepop
 RUN mkdir genepop
@@ -90,8 +89,8 @@ WORKDIR /
 #fastsimcoal
 RUN wget http://cmpg.unibe.ch/software/fastsimcoal2/downloads/fsc_linux64.zip
 RUN unzip fsc_linux64.zip
-RUN chmod a+x fsc_linux64/fsc252
-RUN cp fsc_linux64/fsc252 /usr/bin
+RUN chmod a+x fsc_linux64/fsc25211
+RUN cp fsc_linux64/fsc25211 /usr/bin/fsc252
 RUN rm -rf fsc_*
 
 #DSSP
@@ -107,14 +106,7 @@ RUN rm xx.tar.gz
 WORKDIR /
 ENV PYTHON_PATH /biopython
 
-#BuildBot
-RUN apt-get update
-RUN apt-get install -y buildbot-slave git
-
-RUN buildslave create-slave biopython testing.open-bio.org:9989 CHANGEUSER CHANGEPASS
-
-RUN echo "buildslave start biopython" >> entrypoint.sh
-RUN echo "tail -f biopython/twistd.log" >> entrypoint.sh
-
-ENTRYPOINT bash entrypoint.sh
-
+#Biopython
+RUN git clone https://github.com/biopython/biopython.git
+WORKDIR /biopython
+RUN python3.5 setup.py install

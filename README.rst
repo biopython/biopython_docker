@@ -13,19 +13,22 @@ on Linux or boot2docker (http://boot2docker.io/) on Windows/Mac.
 All containers should include all dependencies which can be installed
 without licensing/copyright issues.
 
-There are 4 containers available at this time:
+There are 5 containers available at this time:
 
-* A basic one where you ssh into to use it
+* A basic one where you ssh into to use it. No databases included.
 
-* One with a Jupyter (IPython Notebook) interface
+* A basic one where you ssh into to use it. With BioSQL.
+
+* One with a Jupyter (IPython Notebook) interface,
 
 * One with a Jupyter (IPython Notebook) interface including a Biopython
-  tutorial
+  tutorial.
 
-* One for buildbot integration testing (currently not documented)
+* One for buildbot integration testing.
 
 
-For each container there are 2 versions: for Python 3 and 2.
+For each container there will be 2 versions: for Python 3 and legacy Python 2.
+For now only Python 3 is available.
 
 Installation and Usage
 ======================
@@ -37,15 +40,18 @@ In the basic container, you ssh into it and use it from there.
 
 Python 3::
 
-    docker build -t biopython https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3
-    docker run -t -i biopython /bin/bash
+    docker pull tiagoantao/biopython
+    docker run -t -i tiagoantao/biopython /bin/bash
     python3  # inside the container
 
-Python 2::
+BioSQL container
+----------------
 
-    docker build -t biopython2 https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython2
-    docker run -t -i biopython2 /bin/bash
-    python  # inside the container
+Python 3::
+
+    docker pull tiagoantao/biopython-sql
+    docker run -t -i tiagoantao/biopython-sql /bin/bash
+    python3  # inside the container
 
 Jupyter container
 -----------------
@@ -58,13 +64,8 @@ VM**
 
 Python 3::
 
-    docker build -t biopython-nb https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3-Notebook
-    docker run -p 9803:9803 -t -i biopython-nb
-
-Python 2::
-
-    docker build -t biopython2-nb https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython2-Notebook 
-    docker run -p 9802:9802 -t -i biopython2-nb
+    docker pull tiagoantao/biopython-notebook
+    docker run -p 9803:9803 -t -i tiagoantao/biopython-notebook
 
 Jupyter container with tutorials
 --------------------------------
@@ -77,23 +78,32 @@ VM**
 
 Python 3::
 
-    docker build -t biopython-tutorial https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython3-Tutorial
-    docker run -p 9803:9803 -t -i biopython-tutorial
+    docker pull tiagoantao/biopython-tutorial
+    docker run -p 9803:9803 -t -i tiagoantao/biopython-tutorial
 
-Python 2::
+Mount your local directory to Docker (here are are naming it $PWD/scratch, but
+change it as preferred)::
 
-    docker build -t biopython2-tutorial https://raw.githubusercontent.com/biopython/biopython_docker/master/Biopython2-Tutorial
-    docker run -p 9802:9802 -t -i biopython2-tutorial
+    docker run -v $PWD:/scratch -e JUPYTER_UID=$UID -it -p 9803:9803 biopython-notebook
 
-Development
-===========
+Buildbot version
+================
 
-These containers are generated via a (arguably clumsy) template system.
-Just run (in the top level):
+**You only need this if you help with our testing effort**
 
-python3 src/generate-containers.py
+You will need to manually download the Docker file and update
 
-The templates are in the template directory
+CHANGEUSER CHANGEPASS
+
+to your buildbot username and password
+
+Python 3::
+
+    #do this in an empty directory
+    wget https://raw.githubusercontent.com/biopython/biopython_docker/new_generation/biopython-buildbot/Dockerfile
+    #REMEMBER TO CHANGE CHANGEUSER AND CHANGEPASS
+    docker build -t biopython-buildbot .
+    docker run -t -i biopython-buildbot
 
 
 LICENSING
@@ -104,3 +114,5 @@ Biopython historic license (see file LICENSE.Biopython) and the 3-clause
 BSD license (see file LICENSE.BSD-3-Clause)
 
 Logo credits and copyright: Vincent Davis
+
+Authors: Tiago Antao and Tao Zhang with help from Björn Grüning

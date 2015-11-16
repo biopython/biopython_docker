@@ -1,9 +1,0 @@
-WORKDIR /
-#IPython notebook with tutorials
-RUN apt-get install -y <pythonp>-zmq <pythonp>-jinja2
-RUN pip<ver> install tornado
-RUN pip<ver> install jsonschema
-RUN pip<ver> install ipython
-RUN git clone https://github.com/tiagoantao/biopython-notebook.git
-WORKDIR /biopython-notebook/notebooks
-CMD ipython notebook --no-browser --ip=* --port=980<ver>
