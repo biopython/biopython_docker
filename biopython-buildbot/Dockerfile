@@ -1,3 +1,8 @@
+FROM biopython/biopython-sql:latest
+MAINTAINER Tiago Antao <tra@popgen.net>
+
+ENV DEBIAN_FRONTEND noninteractive
+
 #BuildBot
 RUN apt-get update
 RUN apt-get install -y buildbot-slave git
