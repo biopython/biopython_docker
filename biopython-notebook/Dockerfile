@@ -17,4 +17,5 @@ ENV JUPYTER_USER=jupyteruser \
     JUPYTER_GID=1555 \
     JUPYTER_HOME=/scratch
 #CMD jupyter notebook --no-browser --ip=* --port=9803
+EXPOSE 9803 9803
 CMD /usr/bin/startup
