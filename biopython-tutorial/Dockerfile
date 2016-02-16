@@ -1,8 +1,8 @@
 FROM biopython/biopython-notebook
 MAINTAINER Tiago Antao <tra@popgen.net>
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV JUPYTER_HOME /scratch/biopython-notebook/notebooks
 
 RUN git clone https://github.com/tiagoantao/biopython-notebook.git
-WORKDIR /biopython-notebook/notebooks
-CMD jupyter notebook --no-browser --ip=* --port=9803
+
+WORKDIR /scratch/biopython-notebook/notebooks

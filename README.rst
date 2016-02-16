@@ -40,8 +40,8 @@ In the basic container, you ssh into it and use it from there.
 
 Python 3::
 
-    docker pull tiagoantao/biopython
-    docker run -t -i tiagoantao/biopython /bin/bash
+    docker pull biopython/biopython
+    docker run -t -i biopython/biopython /bin/bash
     python3  # inside the container
 
 BioSQL container
@@ -49,8 +49,8 @@ BioSQL container
 
 Python 3::
 
-    docker pull tiagoantao/biopython-sql
-    docker run -t -i tiagoantao/biopython-sql /bin/bash
+    docker pull biopython/biopython-sql
+    docker run -t -i biopython/biopython-sql /bin/bash
     python3  # inside the container
 
 Jupyter container
@@ -64,8 +64,8 @@ VM**
 
 Python 3::
 
-    docker pull tiagoantao/biopython-notebook
-    docker run -p 9803:9803 -t -i tiagoantao/biopython-notebook
+    docker pull biopython/biopython-notebook
+    docker run -p 9803:9803 -t -i biopython/biopython-notebook
 
 Jupyter container with tutorials
 --------------------------------
@@ -78,8 +78,8 @@ VM**
 
 Python 3::
 
-    docker pull tiagoantao/biopython-tutorial
-    docker run -p 9803:9803 -t -i tiagoantao/biopython-tutorial
+    docker pull biopython/biopython-tutorial
+    docker run -p 9803:9803 -t -i biopython/biopython-tutorial
 
 Mount your local directory to Docker (here are are naming it $PWD/scratch, but
 change it as preferred)::
@@ -100,7 +100,7 @@ to your buildbot username and password
 Python 3::
 
     #do this in an empty directory
-    wget https://raw.githubusercontent.com/biopython/biopython_docker/new_generation/biopython-buildbot/Dockerfile
+    wget https://raw.githubusercontent.com/biopython/biopython_docker/master/biopython-buildbot/Dockerfile
     #REMEMBER TO CHANGE CHANGEUSER AND CHANGEPASS
     docker build -t biopython-buildbot .
     docker run -t -i biopython-buildbot
