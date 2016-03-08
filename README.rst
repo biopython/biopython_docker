@@ -8,7 +8,7 @@ Docker containers for Biopython
 Here you can find Docker containers that include Biopython.
 
 To install these you will need Docker (https://www.docker.com/)
-on Linux or boot2docker (http://boot2docker.io/) on Windows/Mac.
+on Linux or Docker Toolbox (https://www.docker.com/products/docker-toolbox) on Windows/Mac.
 
 All containers should include all dependencies which can be installed
 without licensing/copyright issues.
