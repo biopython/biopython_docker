@@ -138,5 +138,3 @@ RUN python3.5 setup.py install
 RUN touch ~/.bash_aliases \
 	  && echo alias python=\'python3.5\' > ~/.bash_aliases 
 
-#Interactive shell
-#CMD ["python"]
