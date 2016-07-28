@@ -7,6 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y --force-yes postgresql python3-psycopg2
 RUN apt-get install -y --force-yes mysql-server python-mysqldb
 RUN apt-get install -y --force-yes python3-mysql.connector
+RUN apt-get install -y --force-yes postgresql-server-dev-9.4
 RUN apt-get clean
 
 RUN pip3 install psycopg2 --upgrade
