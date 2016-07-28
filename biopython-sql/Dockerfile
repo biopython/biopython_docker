@@ -11,7 +11,7 @@ RUN apt-get install -y --force-yes postgresql-server-dev-9.4
 RUN apt-get clean
 
 RUN pip3 install psycopg2 --upgrade
-RUN pip3 install --allow-external mysql-connector-python mysql-connector-python --upgrade
+
 #Database servers
 RUN echo "host    all             all             ::1/128                 trust" > /etc/postgresql/9.4/main/pg_hba.conf
 RUN echo "service postgresql start" > .bashrc
