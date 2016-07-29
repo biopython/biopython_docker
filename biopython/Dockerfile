@@ -1,43 +1,43 @@
-FROM ubuntu:wily
+FROM ubuntu:16.04
 MAINTAINER Tiago Antao <tra@popgen.net>
 
 ENV DEBIAN_FRONTEND noninteractive
 #We need this for phylip
-RUN echo 'deb http://archive.ubuntu.com/ubuntu wily multiverse' >> /etc/apt/sources.list \
-	 && apt-get update \
-  	 && apt-get upgrade -y --force-yes \
-	 && apt-get install -y --force-yes \
-	 build-essential \
-	 git \
-         python3-numpy \ 
-	 wget \ 
-         gcc \ 
-         g++ \ 
-         python3-dev \ 
-         unzip \ 
-         make \ 
-	 python3-matplotlib \ 
-         python3-reportlab \  
+RUN echo 'deb http://archive.ubuntu.com/ubuntu xenial multiverse' >> /etc/apt/sources.list \
+	 	 && apt-get update \
+		 && apt-get upgrade -y --force-yes \
+		 && apt-get install -y --force-yes \
+        build-essential \
+        git \
+        python3-numpy \
+         wget \
+         gcc \
+         g++ \
+         python3-dev \
+         unzip \
+         make \
+         python3-matplotlib \
+         python3-reportlab \
          python3-pip r-base \
-         clustalw \ 
-         fasttree \ 
+         clustalw \
+         fasttree \
          t-coffee python3-pil \
          bwa \
          ncbi-blast+ \
          emboss \
          clustalo \
-         phylip \ 
-         mafft \ 
+         phylip \
+         mafft \
          muscle \
-	 samtools \ 
-         phyml \ 
-         wise \ 
-         raxml \ 
+         samtools \
+         phyml \
+         wise \
+         raxml \
          language-pack-en \
-         paml \ 
-         probcons \ 
-         python3-pandas \ 
-         python3.5-dev \ 
+         paml \
+         probcons \
+         python3-pandas \
+         python3.5-dev \
          libxft-dev \
          && apt-get clean
 
@@ -58,7 +58,7 @@ RUN wget http://www.reportlab.com/ftp/fonts/pfbfer.zip
 WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab
 RUN  mkdir fonts
 WORKDIR cd /usr/lib/python3.4/dist-packages/reportlab/fonts
-RUN unzip /pfbfer.zip \ 
+RUN unzip /pfbfer.zip \
     	  && mkdir -p /usr/lib/python3.5/dist-packages/reportlab/fonts
 WORKDIR /usr/lib/python3.5/dist-packages/reportlab/fonts
 RUN unzip /pfbfer.zip
@@ -69,8 +69,8 @@ RUN rm pfbfer.zip
 RUN mkdir genepop
 WORKDIR /genepop
 RUN wget http://kimura.univ-montp2.fr/~rousset/sources.tar.gz \
-         && tar zxf sources.tar.gz \ 
-         && g++ -DNO_MODULES -o Genepop GenepopS.cpp -O3 \  
+         && tar zxf sources.tar.gz \
+         && g++ -DNO_MODULES -o Genepop GenepopS.cpp -O3 \
          && cp Genepop /usr/bin
 WORKDIR /
 RUN rm -rf genepop
@@ -84,7 +84,7 @@ RUN wget http://www.maths.bris.ac.uk/~mamab/software/fdist2.zip \
          && gcc -o cplot -O cplot.c as100.c as99.c -lm \
          && gcc -o pv -O pv.c as100.c as99.c -lm \
          && gcc -o datacal -O datacal.c -lm \
-         && cp datacal pv cplot fdist2 /usr/bin 
+         && cp datacal pv cplot fdist2 /usr/bin
 WORKDIR /
 RUN rm -rf fdist2
 
@@ -97,7 +97,7 @@ RUN gcc -O -o Ddatacal Ddatacal.c -lm \
         && gcc -O -o Dfdist Dfdist.c -lm \
         && gcc -O -o pv2 pv2.c -lm \
         && gcc -O -o cplot2 cplot2.c -lm \
-        && cp pv2 Dfdist Ddatacal cplot2 /usr/bin 
+        && cp pv2 Dfdist Ddatacal cplot2 /usr/bin
 WORKDIR /
 RUN rm -rf Dfdist_a*
 
@@ -125,7 +125,7 @@ RUN wget ftp://ftp.cmbi.ru.nl/pub/software/dssp/dssp-2.0.4-linux-amd64 \
 WORKDIR /usr/local/bin
 RUN wget "http://xxmotif.genzentrum.lmu.de/index.php?id=download&version=64" -O xx.tar.gz \
          && tar zxf xx.tar.gz \
-         && rm xx.tar.gz 
+         && rm xx.tar.gz
 WORKDIR /
 ENV PYTHON_PATH /biopython
 
@@ -136,5 +136,4 @@ RUN python3.5 setup.py install
 
 #set default python version to 3.5
 RUN touch ~/.bash_aliases \
-	  && echo alias python=\'python3.5\' > ~/.bash_aliases 
-
+	  && echo alias python=\'python3.5\' > ~/.bash_aliases
